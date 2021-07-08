@@ -1,0 +1,4 @@
+q-q plot
+streamgraph
+visual encoding
+...
