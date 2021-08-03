@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>histograma vega-lite</title>
+		<script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+	</head>
+	<body>
+		<h1>Histograma IMDB con VEGA-lite</h1>
+		<div id="vis"></div>
+
+      <script type="text/javascript">
+			var vlSpec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://vega.github.io/vega-lite/examples/data/movies.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": true,
+      "field": "IMDB Rating"
+    },
+    "y": {"aggregate": "count"},
+    "color" : {"field": "MPAA Rating"}
+  }
+};
+			
+			vegaEmbed('div#vis', vlSpec);
+			  
+		</script>
+	</body>
+</html>
