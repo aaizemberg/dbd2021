@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,6 @@
 <script>
 var datos = [
   {pais:'AR', valor:10},
-  {pais:'CL', valor:15},
   {pais:'BR', valor:20}
 ];
 
@@ -25,17 +25,20 @@ var escala_x = d3.scaleLinear()
     .domain([0, datos.length-1])
     .range([50, 150]);
 
+var er = d3.scaleSqrt().domain([0,20]).range([0,50]);
+  
 svg.selectAll("circle").data(datos).enter()
   .append("circle")
   .attr("cx", function(d,i) {return escala_x(i);} ) 
   .attr("cy",100)
-  .attr("r", function(d) {return d.valor;}  )
+  .attr("r", function(d) {return er(d.valor);}  )
   .attr("fill","purple");
 
 svg.selectAll("text").data(datos).enter()
   .append("text")
   .attr("x", function(d,i) {return escala_x(i);} ) // 50, 150 
-  .attr("y",135)
+  .attr("y",105)
+  .attr("fill","white")
   .attr("text-anchor","middle")
   .text( d => d.pais );    
 </script>
